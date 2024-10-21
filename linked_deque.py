@@ -88,6 +88,12 @@ class LinkedDeque:
         self.size -= 1
         return data     
 
+    def clear(self):
+        self.front = None
+        self.back = None
+        self.size = 0
+
+
     def is_empty(self):
         return self.size == 0
 
