@@ -1,5 +1,4 @@
 from linked_deque import LinkedDeque
-from stock_ledger import StockLedger
 
 class LedgerEntry:
     def __init__(self, stock_symbol):
