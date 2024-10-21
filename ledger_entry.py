@@ -1,8 +1,8 @@
 from linked_deque import LinkedDeque
-from stock_purchase import StockPurchase
+from stock_ledger import StockLedger
 
 class LedgerEntry:
-    def __init__(self):
+    def __init__(self, stock_symbol):
         self.stock_symbol = stock_symbol
         self.purchases = LinkedDeque() # Deque for storing StockPurchase objects
     
@@ -20,10 +20,10 @@ class LedgerEntry:
         current_node = self.purchases.front # starts from the front of the deque
         purchase_list = []
         
-    while current_node is not None:
-        purchase = current_node.get_data()
-        purchase_list.append(f"{purchase.cost_per_share} ({purchase.shares} shares)")
-        current_node = current_node.get_next_node()
+        while current_node is not None:
+            purchase = current_node.get_data()
+            purchase_list.append(f"{purchase.cost_per_share} ({purchase.shares} shares)")
+            current_node = current_node.get_next_node()
 
     # join purchases into a single string & print
-    print(", ".join(purchase_list))
+        print(", ".join(purchase_list))

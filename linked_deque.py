@@ -16,13 +16,13 @@ class DLNode:
     def set_next_node(self):
         return self.next
     
-    def set_next_node(self):
+    def set_next_node(self, next_node):
         self.next = next_node
 
     def get_previous_node(self):
         return self.previous
     
-    def set_precious_node(self):
+    def set_precious_node(self, previous_node):
         self.previous = previous_node
     
 class LinkedDeque:
