@@ -4,7 +4,7 @@ from linked_deque import LinkedDeque
 
 class StockLedger:
     def __init__(self):
-        self.entries = LinkedDeque() # store LedgerEntry onjects
+        self.entries = LinkedDeque() # store LedgerEntry objects
 
     def display_ledger(self):
         print("---- Stock Ledger ----")
@@ -15,14 +15,28 @@ class StockLedger:
             current_node = current_node.get_next_node()
 
     
+    # def get_entry(self, stock_symbol):
+    #     current_node = self.entries.front
+    #     while current_node is not None:
+    #         entry = current_node.get_data()
+    #         if entry.equals(LedgerEntry(stock_symbol)):
+    #             return entry
+    #         current_node = current_node.get_next_node()
+    #     return None
+
     def get_entry(self, stock_symbol):
+    # Check if the deque is empty
+        if self.entries.is_empty():
+            return None  # Return None if no entries exist
+
         current_node = self.entries.front
         while current_node is not None:
             entry = current_node.get_data()
             if entry.equals(LedgerEntry(stock_symbol)):
                 return entry
             current_node = current_node.get_next_node()
-        return None
+
+        return None  # Return None if the stock symbol is not found
     
 
     def buy(self, stock_symbol, shares_bought, price_per_share):
@@ -46,6 +60,11 @@ class StockLedger:
 
         total_cost = 0
         total_shares_sold = 0
+
+        if entry.purchases.is_empty():
+            print(f"No purchases available for {stock_symbol}.")
+            return
+
         while shares_sold > 0 and not entry.purchases.is_empty():
             purchase = entry.remove_purchase() #FIFO
 
@@ -67,22 +86,5 @@ class StockLedger:
             profit_or_loss = (price_per_share * total_shares_sold) - total_cost
             print(f"Sold {total_shares_sold} shares of {stock_symbol} at ${price_per_share} each.")
             print(f"Total cost basis: ${total_cost}, Profit/Loss: ${profit_or_loss}")
-
-        # def display_ledger(self):
-        #     print("---- Stock Ledger ----")
-        #     current_node = self.entries.front
-        #     while current_node is not None:
-        #         entry = current_node.get_data()
-        #         entry.display_entry()               # Display purchases for each stock
-        #         current_node = current_node.get_next_node()
-
-        
-        # def get_entry(self, stock_symbol):
-        #     while current_node is not None:
-        #         entry = current_node.get_data()
-        #         if entry.equals(LedgerEntry(stock_symbol)):
-        #             return entry
-        #         current_node = current_node.get_next_node()
-        #     return None
 
             

@@ -22,7 +22,7 @@ class DLNode:
     def get_previous_node(self):
         return self.previous
     
-    def set_precious_node(self, previous_node):
+    def set_previous_node(self, previous_node):
         self.previous = previous_node
     
 class LinkedDeque:
