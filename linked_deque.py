@@ -93,7 +93,6 @@ class LinkedDeque:
         self.back = None
         self.size = 0
 
-
     def is_empty(self):
         return self.size == 0
 
